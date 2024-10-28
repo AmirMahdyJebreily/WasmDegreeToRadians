@@ -24,5 +24,7 @@ func toRadian() js.Func {
 }
 
 func main() {
+	fmt.Println("Code agha")
 	js.Global().Set("toRadian", toRadian())
+	<-make(chan struct{})
 }
