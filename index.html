@@ -10,5 +10,15 @@
     <h1>Degrees to Radians Converter</h1>
     <span>by<h2>Code Agha</h2></span>
 
+    <script src="core/out/wasm_exec.js"></script>
+    <script>
+
+        const go = new Go();
+
+        WebAssembly.instantiateStreaming(fetch("core/out/radian.wasm"), go.importObject).then((result) => {
+            go.run(result.instance);
+        });
+
+    </script>
 </body>
 </html>
