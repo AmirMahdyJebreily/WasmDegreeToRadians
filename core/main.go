@@ -1,7 +1,8 @@
-package WasmDegreeToRadians
+package main
 
 import (
 	"fmt"
+	"syscall/js"
 )
 
 func gcf(u, v int) int {
@@ -11,7 +12,17 @@ func gcf(u, v int) int {
 	return gcf(v, u%v)
 }
 
-func toRadian(degree int) string {
-	n := gcf(180, degree)
-	return fmt.Sprintf("\\frac{%v\\pi}{%v}", degree/n, 180/n)
+func toRadian() js.Func {
+	return js.FuncOf(func(this js.Value, args []js.Value) any {
+		if len(args) != 1 {
+			return "Invalid no of arguments passed"
+		}
+		var degree int = args[0].Int()
+		n := gcf(180, degree)
+		return fmt.Sprintf("\\frac{%v\\pi}{%v}", degree/n, 180/n)
+	})
+}
+
+func main() {
+	js.Global().Set("toRadian", toRadian())
 }
