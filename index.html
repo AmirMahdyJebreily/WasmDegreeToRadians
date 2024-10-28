@@ -1,15 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Degrees to Radians with wasm - code agha</title>
-</head>
-
-<body>
-    <h1>Degrees to Radians Converter</h1>
-    <span>by<h2>Code Agha</h2></span>
-
     <script src="core/out/wasm_exec.js"></script>
     <script>
 
@@ -20,5 +15,34 @@
         });
 
     </script>
+
+
+
+    <!-- <script id="MathJax-script" async src="scripts/tex-mml-chtml.js"></script> -->
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+</head>
+
+<body>
+    <h1>Degrees to Radians Converter</h1>
+    <span>by<h2>Code Agha</h2></span>
+
+    <input type="number" id="degrees">Degrees
+    <p id="res">\[ \frac{1}{2} \]</p>
+
+    <script>
+
+        const degrees = document.querySelector("#degrees")
+        degrees.addEventListener("change", () => {
+            console.log(degrees.value);
+            let val = degrees.value
+            document.querySelector("#res").innerHTML = `\\[ ${toRadian(Number(val))} \\]`
+            MathJax.typeset()
+        })
+
+
+    </script>
 </body>
+
 </html>
