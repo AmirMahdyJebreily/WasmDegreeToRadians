@@ -1,0 +1,48 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Times New Roman', Times, serif;
+}
+h1{
+    font-size: 28px;  
+    
+    @media screen and (max-width: 480px) {
+        font-size: 18px;  
+    }
+}
+
+h3{
+    font-size: medium;
+}
+h1,h3 {
+    margin: 0;
+}
+header {
+    background-color: rgb(136, 136, 136);
+    padding: .5rem 0.75rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+}
+
+.header-content > span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.github-logo{
+    width: 2rem;
+    height: 2rem;
+}
+
+input {
+    width: 5rem;
+}
+
+main {
+    padding: .5rem 0.75rem;
+    text-align: center;
+}

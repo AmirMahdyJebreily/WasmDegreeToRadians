@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Degrees to Radians with wasm - code agha</title>
+    <link rel="stylesheet" href="./style.css" />
     <script src="core/out/wasm_exec.js"></script>
     <script>
 
@@ -21,15 +22,45 @@
     <!-- <script id="MathJax-script" async src="scripts/tex-mml-chtml.js"></script> -->
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-
 </head>
 
 <body>
-    <h1>Degrees to Radians Converter</h1>
-    <span>by<h2>Code Agha</h2></span>
+    <header>
+        <section class="header-content">
+            <h1>Degrees to Radians Converter</h1>
+            <span>by<h3>Code Agha</h3></span>
+        </section>
+        <a href="https://github.com/AmirMahdyJebreily/WasmDegreeToRadians">
+            <img src="assets/github-mark-white.svg" class="github-logo" alt="Code Agha Github">
+        </a>
+    </header>
 
-    <input type="number" id="degrees">Degrees
-    <p id="res">\[ x rad \]</p>
+    <main>
+        <p>
+            <input type="number" id="degrees" value="0"> \(Degrees \)
+        <p id="res">\[ Radians = \frac{Degrees.\pi}{180} \]</p>
+        </p>
+
+        <br />
+        <br />
+        <p>This project is just an experiment to use golang in the web environment and use MathJax to display
+            mathematical and mathematical expressions. You can see all the technologies that were combined in this
+            project:</p>
+
+
+        <a href="https://www.mathjax.org">
+            <img title="Powered by MathJax" src="https://www.mathjax.org/badge/mj_logo.png" border="0"
+                alt="Powered by MathJax" />
+        </a>
+        <a href="https://webassembly.org/">
+            <img title="Powered by Wasm" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/WebAssembly_Logo.svg/240px-WebAssembly_Logo.svg.png" width="72" height="72" border="0"
+                alt="Powered by Wasm" />
+        </a>
+        <a href="https://webassembly.org/">
+            <img title="Powered by Golang" src="https://go.dev/blog/go-brand/Go-Logo/PNG/Go-Logo_Blue.png" width="96" height="96" border="0"
+                alt="Powered by Golang" />
+        </a>
+    </main>
 
     <script>
 
@@ -37,7 +68,11 @@
         degrees.addEventListener("change", () => {
             console.log(degrees.value);
             let val = degrees.value
-            document.querySelector("#res").innerHTML = `\\[ ${toRadian(Number(val))} \\]`
+            if (Number(val) == Number(0)) {
+                document.querySelector("#res").innerHTML = `\\[ Radians = \\frac{Degrees.\\pi}{180} \\]`
+            } else {
+                document.querySelector("#res").innerHTML = `\\[ Radians = ${toRadian(Number(val))} \\]`
+            }
             MathJax.typeset()
         })
 
